@@ -1,0 +1,49 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Covid Records</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+</head>
+
+<body>
+<div class="container">
+<h1>Corona Virus Daily Update</h1>
+<p>
+    This page shows an updated information regarding Corona virus cases across the globe.
+</p>
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${total}"></h1>
+    <p class="lead">Covid cases as of today.</p>
+    <hr class="my-4">
+    <p>
+        <span>New cases reported since the previous day</span>
+        <span th:text="${trc}"></span>
+    </p>
+
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>State</th>
+        <th>Country</th>
+        <th>Total Cases Reported</th>
+        <th>Variation since last day</th>
+    </tr>
+    <tr th:each="prod : ${cvds}">
+        <td th:text="${prod.state}"></td>
+        <td th:text="${prod.country}"></td>
+        <td th:text="${prod.latest}">0</td>
+        <td th:text="${prod.diff}">0</td>
+    </tr>
+</table>
+</div>
+
+
+</body>
+
+</html>
